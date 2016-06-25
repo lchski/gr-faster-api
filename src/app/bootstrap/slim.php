@@ -37,6 +37,10 @@ $c['api'] = function ($c) {
         'base_uri' => env('API_URL', 'https://www.goodreads.com/'),
         // Custom handler, to include middleware.
         'handler'  => $stack,
+        // API query parameters
+        'query'    => [
+            'key'  => env('API_KEY', ''),
+        ]
     ]);
 };
 
