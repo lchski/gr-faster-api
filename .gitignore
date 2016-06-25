@@ -1,5 +1,7 @@
 .idea
 
+docker/data/db/**/*
+
 src/vendor/
 src/.env
 
