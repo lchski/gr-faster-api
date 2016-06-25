@@ -1,0 +1,24 @@
+web:
+    image: nginx
+    ports:
+        - "8080:80"
+    volumes:
+        - ./src:/srv/www
+        - ./docker/conf/nginx:/etc/nginx/conf.d
+    links:
+        - php
+
+php:
+    image: php-custom:7-fpm
+    volumes:
+        - ./src:/srv/www
+    links:
+        - db
+
+db:
+    image: mariadb
+    environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=grfasterapidev
+        - MYSQL_USER=grfasterapidev
+        - MYSQL_PASSWORD=password
