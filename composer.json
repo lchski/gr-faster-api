@@ -1,0 +1,38 @@
+{
+    "name": "lchski/gr-faster-api",
+    "description": "A Slim application for my gr-faster project.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lucas Cherkewski",
+            "email": "lucas@lucascherkewski.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3.0",
+        "vlucas/phpdotenv": "^2.2",
+        "illuminate/support": "^5.2",
+        "guzzlehttp/guzzle": "~6.0",
+        "kevinrob/guzzle-cache-middleware": "^1.2",
+        "doctrine/cache": "^1.6"
+    },
+    "config" : {
+        "vendor-dir": "src/vendor/"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lchski\\": [
+                "src/app/middleware/",
+                "src/app/models/",
+                "src/app/controllers/"
+            ],
+            "Lchski\\Contracts\\": [
+                "src/app/contracts/"
+            ],
+            "Lchski\\Helpers\\": [
+                "src/app/helpers/"
+            ]
+        }
+    }
+}
