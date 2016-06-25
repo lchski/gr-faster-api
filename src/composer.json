@@ -17,21 +17,18 @@
         "kevinrob/guzzle-cache-middleware": "^1.2",
         "doctrine/cache": "^1.6"
     },
-    "config" : {
-        "vendor-dir": "src/vendor/"
-    },
     "autoload": {
         "psr-4": {
             "Lchski\\": [
-                "src/app/middleware/",
-                "src/app/models/",
-                "src/app/controllers/"
+                "app/middleware/",
+                "app/models/",
+                "app/controllers/"
             ],
             "Lchski\\Contracts\\": [
-                "src/app/contracts/"
+                "app/contracts/"
             ],
             "Lchski\\Helpers\\": [
-                "src/app/helpers/"
+                "app/helpers/"
             ]
         }
     }

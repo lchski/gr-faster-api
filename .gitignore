@@ -1,6 +1,6 @@
-node_modules/
-dist/
-vendor/
 .idea
-.env
+
+src/vendor/
+src/.env
+
 public/assets/
