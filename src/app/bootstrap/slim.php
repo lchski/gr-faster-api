@@ -10,6 +10,11 @@ $configuration = [
 // Create our custom Slim container.
 $c = new \Slim\Container($configuration);
 
+// Configure Slim's HTTP caching plugin.
+$c['cache'] = function () {
+    return new \Slim\HttpCache\CacheProvider();
+};
+
 // Register REST API client
 $c['api'] = function ($c) {
     // Create handler, to insert middleware onto.
@@ -49,3 +54,5 @@ $app = new \Slim\App($c);
 
 // Add our global middleware.
 $app->add(new \Lchski\TrailingSlashMiddleware);
+
+$app->add(new \Slim\HttpCache\Cache('private', 300, true));
