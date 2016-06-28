@@ -83,14 +83,14 @@ abstract class BaseController implements Controller
         $builtResponse = $this->response
             ->withHeader('Content-Type', 'application/json');
 
-        // If the data comes directly from a Guzzle, we just process it directly.
-        if ( isset($data['directResponse']) ) {
+        // If the data is a Guzzle response, we just process it directly.
+        if ( is_a($data, '\GuzzleHttp\Psr7\Response') ) {
             $builtResponse = $builtResponse
                 ->write(
                     json_encode(
                         xmlToArray(
                             simplexml_load_string(
-                                $data['directResponse']->getBody()
+                                $data->getBody()
                             )
                         ),
                         JSON_PRETTY_PRINT
