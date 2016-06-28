@@ -9,7 +9,7 @@ web:
         - php
 
 php:
-    image: php-custom:7-fpm
+    image: lchski/php:7-fpm-extended
     volumes:
         - ./src:/srv/www
     links:
