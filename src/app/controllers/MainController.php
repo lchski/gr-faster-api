@@ -10,7 +10,11 @@ class MainController extends BaseController implements Controller
 {
     public function getShelves()
     {
-
+        return $this->buildResponse(
+            $this->callApi('shelf/list.xml', [
+                'user_id' => $this->args['userId'],
+            ])
+        );
     }
 
     public function getShelfBooks()
