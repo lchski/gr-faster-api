@@ -105,11 +105,7 @@ abstract class BaseController implements Controller
             $builtResponse = $builtResponse
                 ->write(
                     json_encode(
-                        xmlToArray(
-                            simplexml_load_string(
-                                $data->getBody()
-                            )
-                        ),
+                        $this->xmlResponseToArray($data),
                         JSON_PRETTY_PRINT
                     )
                 );
@@ -124,5 +120,20 @@ abstract class BaseController implements Controller
 
         // Return the response with an ETag added, for caching.
         return $this->c->cache->withEtag($builtResponse, sha1($builtResponse->getBody()));
+    }
+
+    /**
+     * Converts an XML Guzzle response into an array.
+     *
+     * @param \GuzzleHttp\Psr7\Response $response
+     * @return array
+     */
+    public function xmlResponseToArray(\GuzzleHttp\Psr7\Response $response)
+    {
+        return xmlToArray(
+            simplexml_load_string(
+                $response->getBody()
+            )
+        );
     }
 }
