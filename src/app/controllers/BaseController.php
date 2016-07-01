@@ -72,6 +72,23 @@ abstract class BaseController implements Controller
     }
 
     /**
+     * Makes a call to the Goodreads API.
+     *
+     * @param $uri
+     * @param array $parameters
+     * @return mixed
+     */
+    public function callApi($uri, $parameters = [])
+    {
+        return $this->c->api->get(
+            $uri,
+            [
+                'query' => array_merge($this->c->api->getConfig('query'), $parameters)
+            ]
+        );
+    }
+
+    /**
      * Convert data to JSON and set as response, with caching header.
      *
      * @param $data mixed
