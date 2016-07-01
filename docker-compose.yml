@@ -9,11 +9,13 @@ web:
         - php
 
 php:
-    image: lchski/php:7-fpm-extended
+    image: lchski/php:7-base-dev
     volumes:
         - ./src:/srv/www
     links:
         - db
+    environment:
+        XDEBUG_CONFIG: remote_host=10.10.10.10
 
 db:
     image: mariadb
