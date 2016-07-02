@@ -30,12 +30,22 @@ class MainController extends BaseController implements Controller
 
     public function getShelfBooks()
     {
-        return $this->buildResponse(
-            $this->callApi('review/list', [
-                'v' => 2,
-                'id' => $this->args['userId'],
-                'shelf' => $this->args['shelfName'],
-            ])
-        );
+        $data = $this->callApi('review/list', [
+            'v' => 2,
+            'id' => $this->args['userId'],
+            'shelf' => $this->args['shelfName'],
+        ]);
+
+        $dataCollection = collect($this->xmlResponseToArray($data)['GoodreadsResponse']['reviews']['review']);
+
+        $processedData = $dataCollection->map(function ($item, $key) {
+            return [
+                'id' => $item['book']['id']['$'],
+                'title' => $item['book']['title'],
+                'published' => $item['book']['published'],
+            ];
+        });
+
+        return $this->buildResponse($processedData);
     }
 }
