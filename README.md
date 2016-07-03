@@ -9,7 +9,11 @@ Docker notes:
 * To deploy:
     * Create a remote docker-machine
     * Switch to it using the command provided by `docker-machine env {machine-name}`
-    * Run `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up`
+    * Run `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d`
+* To deploy with changes:
+    * Ensure you’re switched to the right machine
+    * `docker-compose -f docker-compose.yml -f docker-compose.prod.yml build`
+    * `docker-compose down && docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d`
 
 Links (temp):
 * https://docs.docker.com/docker-hub/accounts/
