@@ -12,6 +12,9 @@ services:
             - php
 
     php:
+        build:
+            context: .
+            dockerfile: ./docker/images/lchski/php/Dockerfile
         image: lchski/php:7-base-dev
         volumes:
             - ./src:/srv/www
