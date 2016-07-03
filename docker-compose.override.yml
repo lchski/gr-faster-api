@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+    web:
+        ports:
+            - '8080:80'
+        volumes:
+            - ./src:/srv/www
+            - ./docker/conf/nginx:/etc/nginx/conf.d
+
+    php:
+        volumes:
+            - ./src:/srv/www
+        environment:
+            XDEBUG_CONFIG: remote_host=10.10.10.10
+
+    db:
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=grfasterapidev
+            - MYSQL_USER=grfasterapidev
+            - MYSQL_PASSWORD=password

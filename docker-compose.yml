@@ -2,12 +2,10 @@ version: '2'
 
 services:
     web:
-        image: nginx
-        ports:
-            - '8080:80'
-        volumes:
-            - ./src:/srv/www
-            - ./docker/conf/nginx:/etc/nginx/conf.d
+        build:
+            context: .
+            dockerfile: ./docker/images/lchski/nginx/Dockerfile
+        image: lchski/nginx:gr-faster-api
         links:
             - php
 
@@ -15,13 +13,9 @@ services:
         build:
             context: .
             dockerfile: ./docker/images/lchski/php/Dockerfile
-        image: lchski/php:7-base-dev
-        volumes:
-            - ./src:/srv/www
+        image: lchski/php:gr-faster-api
         links:
             - db
-        environment:
-            XDEBUG_CONFIG: remote_host=10.10.10.10
 
     db:
         image: mariadb
