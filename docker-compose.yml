@@ -12,8 +12,6 @@ services:
     php:
         build:
             context: .
-            dockerfile: ./docker/images/lchski/php/Dockerfile
-        image: lchski/php:gr-faster-api
         links:
             - db
 

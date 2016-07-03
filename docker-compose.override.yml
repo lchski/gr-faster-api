@@ -11,6 +11,7 @@ services:
     php:
         build:
             dockerfile: ./docker/images/lchski/php/Dockerfile-dev
+        image: lchski/php:gr-faster-api-dev
         volumes:
             - ./src:/srv/www
         environment:

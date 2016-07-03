@@ -7,6 +7,9 @@ services:
         restart: always
 
     php:
+        build:
+            dockerfile: ./docker/images/lchski/php/Dockerfile
+        image: lchski/php:gr-faster-api-prod
         restart: always
 
     db:
