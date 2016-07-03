@@ -1,28 +1,34 @@
-web:
-    image: nginx
-    ports:
-        - "8080:80"
-    volumes:
-        - ./src:/srv/www
-        - ./docker/conf/nginx:/etc/nginx/conf.d
-    links:
-        - php
+version: '2'
 
-php:
-    image: lchski/php:7-base-dev
-    volumes:
-        - ./src:/srv/www
-    links:
-        - db
-    environment:
-        XDEBUG_CONFIG: remote_host=10.10.10.10
+services:
+    web:
+        image: nginx
+        ports:
+            - '8080:80'
+        volumes:
+            - ./src:/srv/www
+            - ./docker/conf/nginx:/etc/nginx/conf.d
+        links:
+            - php
 
-db:
-    image: mariadb
-    volumes:
-        - ./docker/data/db:/var/lib/mysql
-    environment:
-        - MYSQL_ROOT_PASSWORD=root
-        - MYSQL_DATABASE=grfasterapidev
-        - MYSQL_USER=grfasterapidev
-        - MYSQL_PASSWORD=password
+    php:
+        image: lchski/php:7-base-dev
+        volumes:
+            - ./src:/srv/www
+        links:
+            - db
+        environment:
+            XDEBUG_CONFIG: remote_host=10.10.10.10
+
+    db:
+        image: mariadb
+        volumes:
+            - database:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=grfasterapidev
+            - MYSQL_USER=grfasterapidev
+            - MYSQL_PASSWORD=password
+
+volumes:
+    - database
