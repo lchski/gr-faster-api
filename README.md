@@ -23,3 +23,7 @@ Links (temp):
 * https://docs.docker.com/compose/compose-file/
 * https://docs.docker.com/compose/production/
 * https://developer.rackspace.com/blog/dev-to-deploy-with-docker-machine-and-compose/ and https://github.com/rackerlabs/guestbook
+* https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/
+* https://docs.docker.com/engine/reference/builder/#/dockerignore-file
+* https://learning-continuous-deployment.github.io/docker/images/dockerfile/database/persistence/volumes/linking/container/2015/05/29/docker-and-databases/
+* https://docs.docker.com/engine/reference/run/#/restart-policies-restart
