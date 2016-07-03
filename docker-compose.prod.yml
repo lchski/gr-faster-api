@@ -7,6 +7,8 @@ services:
         restart: always
         environment:
             - VIRTUAL_HOST=test.lucascherkewski.com
+            - LETSENCRYPT_HOST=test.lucascherkewski.com
+            - LETSENCRYPT_EMAIL=lucas+le@ecustom.ca
         external_links:
             - nginx_proxy
         networks:
