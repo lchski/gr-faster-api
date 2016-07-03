@@ -9,6 +9,8 @@ services:
             - ./docker/conf/nginx:/etc/nginx/conf.d
 
     php:
+        build:
+            dockerfile: ./docker/images/lchski/php/Dockerfile-dev
         volumes:
             - ./src:/srv/www
         environment:

@@ -1,3 +1,5 @@
-FROM lchski/php:7-base-dev
+FROM php:7-fpm
+
+RUN docker-php-ext-install pdo pdo_mysql
 
 COPY ./src /srv/www
